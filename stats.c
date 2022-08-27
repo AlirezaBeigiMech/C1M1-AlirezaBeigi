@@ -41,10 +41,12 @@ int main() {
   arr = copied( num, SIZE);
 
   print_array(num,SIZE); 
-  print_statistics(num,SIZE);
+  
 
   sort_array(arr,SIZE);
-  print_array(arr,SIZE); 
+  print_array(arr,SIZE);
+  print_statistics(arr,SIZE);
+ 
 
   return 0;
   
@@ -90,7 +92,16 @@ void print_statistics(unsigned char num[],int size) {
 
 unsigned char find_median(unsigned char num[],int size) {
   unsigned char sum = 0.0;
-  int med = size/2;
+  int med;
+  if (size%2 ==0)
+  {
+    med = size/2-1;
+  }
+    if (size%2 !=0)
+  {
+    med = size/2;
+  }
+
 
   return num[med];
 
@@ -127,13 +138,15 @@ unsigned char find_minimum(unsigned char num[],int size) {
 }
 
 unsigned char find_mean(unsigned char num[],int size) {
-  unsigned char sum = 0.0;
+  long sum = 0.0;
 
   for (int i = 0; i < size; ++i) {
 
     sum = sum + num[i];
+    
 
   }
+  
   unsigned char mean = sum/size;
   return mean;
 
